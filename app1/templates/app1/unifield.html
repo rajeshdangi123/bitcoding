@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        body{
+            background-color: aliceblue;
+        }
+    </style>
+    
+    <form action="" method="">
+      
+        <table border="1" cellpadding="12px"> 
+            <tr>
+                
+                <th>bom_pn</th>
+                <th>bom_qty</th>
+                <th>disti_pn</th>
+                <th>disti_qty</th>
+                <th>error_flag</th>
+              
+    
+            </tr>
+            {% for i in unified_list%}
+            
+            <tr>
+                <td>{{i.bom_pn}}</td>
+                <td>{{i.bom_qty}}</td>
+                <td>{{i.disti_pn}}</td>
+                <td>{{i.disti_qty}}</td>
+                <td>{{i.error_flag}}</td>
+              
+               <!-- <a href="{{ your_model_instance.resume.url }}">Download Resume</a> -->
+    
+            </tr>
+        {% endfor%}
+        </table>
+    </form>
+</body>
+</html>
