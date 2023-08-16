@@ -13,12 +13,12 @@ def base(request):
         bom_qty = bom_item["quantity"]
         print(bom_pn, bom_qty)
         print("bom_item", bom_item)
-        disti_item = {}
-        for item in disti:
-            if item["part_number"] == bom_pn:  # first condition
-                disti_item.update(item)
+        # disti_item = {}
+        # for item in disti:
+        #     if item["part_number"] == bom_pn:  # first condition
+        #         disti_item.update(item)
 
-        # disti_item = next((item for item in disti if item["part_number"] == bom_pn), None)
+        disti_item = next((item for item in disti if item["part_number"] == bom_pn), None)
         print("dist_item", disti_item)
         if  disti_item:
             disti_pn = disti_item["part_number"]
@@ -41,19 +41,20 @@ def base(request):
                 print(type(unified_list))
 
                 while remainder > 0:
-                    #next_bom_item = next(
-                       # (item for item in bom if item["part_number"] != bom_pn), None
-                    #)
-                    next_bom_item=[]
-                    for item in bom:
-                        if item["part_number"]!=bom_pn:
-                            next_bom_item.append(item)
+                    next_bom_item = next(
+                       (item for item in bom if item["part_number"] != bom_pn), None
+                    )
+                    # next_bom_item=[]
+                    # for item in bom:
+                    #     if item["part_number"]!=bom_pn:
+                    #         next_bom_item.append(item)
+                        
                     print("next_bom_item", next_bom_item)
                     if next_bom_item:
                         # print("next_bom_qty",next_bom_item)
                         next_bom_qty = next_bom_item["quantity"]
                         print("next_bom_qty", next_bom_qty)
-
+                
                         if remainder >= next_bom_qty:
                             unified_list.append(
                                 {
@@ -110,11 +111,11 @@ def base(request):
     for disti_item in disti:
         disti_pn = disti_item["part_number"]
         disti_qty = disti_item["quantity"]
-        #bom_item = next((item for item in bom if item["part_number"] == disti_pn), None)
-        bom_item=[]
-        for item in bom:
-            if item["part_number"] == disti_pn:
-                bom_item.append(item)
+        bom_item = next((item for item in bom if item["part_number"] == disti_pn), None)
+        # bom_item=[]
+        # for item in bom:
+        #     if item["part_number"] == disti_pn:
+        #         bom_item.append(item)
                 
         if not bom_item:
             unified_list.append(
